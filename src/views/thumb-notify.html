@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            animation: slideIn .5s;
+            -webkit-animation: slideIn .5s;
+        }
+
+        .slide-out {
+            left: 142px;
+            animation: slideOut .5s;
+            -webkit-animation: slideOut .5s;
+        }
+
+        @keyframes slideIn {
+            from {
+                left: 142px;
+            }
+            to {
+                left: 0px;
+            }
+        }
+
+        @-webkit-keyframes slideIn {
+            from {
+                left: 142px;
+            }
+            to {
+                left: 0px;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                left: 0px;
+            }
+            to {
+                left: 142px;
+            }
+        }
+
+        @-webkit-keyframes slideOut {
+            from {
+                left: 0px;
+            }
+            to {
+                left: 142px;
+            }
+        }
+    </style>
+
+    <script>if (typeof module === 'object') { window.module = module; module = undefined; }</script>
+    <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script>if (window.module) module = window.module;</script>
+</head>
+
+<body>
+    <img></img>
+    <script>
+        $(() => {
+            let electron = require('electron');
+            let thisWin = electron.remote.getCurrentWindow();
+            let src = `${thisWin.dataUrl}`;
+            $('img').attr('src', src);
+
+            window.setTimeout(() => {
+                $('img').addClass('slide-out');
+                window.setTimeout(() => { thisWin.close(); }, 500);
+            }, 2000);
+        });
+    </script>
+</body>
+
+</html>

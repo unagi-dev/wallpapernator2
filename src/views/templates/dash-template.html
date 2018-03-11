@@ -1,0 +1,59 @@
+<script type="text/html" id="dash-template">
+    <div class="container-fluid pad-left-7">
+        <div class="row">
+            <div class="col">
+            <h3>Dashboard</h3>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col col-sm-4">
+            Spotlight
+            </div>
+            <div class="col" data-bind="text: status().SpotlightMessage">
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col col-sm-4">
+            Bing
+            </div>
+            <div class="col" data-bind="text: status().BingMessage">
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col col-sm-4 pad-top-6">
+            Last Spotlight image
+            </div>
+            <div class="col">
+            <button type="button" onclick="processSpotligth_click()" class="btn btn-sm btn-normal">Check now</button>&nbsp;
+            <span data-bind="text: status().SpotlightLastImage"></span>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col col-sm-4 pad-top-6">
+            Last Bing image
+            </div>
+            <div class="col">
+            <button type="button" onclick="processBing_click()" class="btn btn-sm btn-normal">Check now</button>&nbsp;
+            <span data-bind="text: status().BingLastImage"></span>
+            </div>
+        </div>
+    
+        <hr />
+    
+        <div class="row">
+            <div class="col">
+            <label>Log</label>
+            <div class="space-16"></div>
+            <div id="Logs" data-bind="html: logs">
+            </div>
+            </div>
+        </div>
+    
+        <hr />
+    
+    </div>
+</script>

@@ -1,0 +1,130 @@
+<script type="text/html" id="settings-template">
+    <div class="container-fluid pad-left-7">
+        <div class="row">
+            <div class="col">
+            <h3>Settings</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+            <table style="width:100%">
+    
+                <!-- Wallpaper path -->
+                <tr>
+                <td colspan="2">
+                    <label for="WallpaperPath">Save wallpapers to</label>
+                    <div class="nfo" data-toggle="tooltip" data-placement="right" title="The folder to save the wallpapers in."></div>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                    <input id="WallpaperPath" onblur="folderUpdated_blur('WallpaperPath')" type="text" data-bind="value: WallpaperPath" />
+                </td>
+                <td>
+                    <button type="button" onclick="btnBrowseWallpaper_click()" class="btn btn-sm btn-normal">Browse</button>
+                </td>
+                </tr>
+    
+                <!-- Spotlight path -->
+                <tr>
+                <td colspan="2">
+                    <div class="space-16"></div>
+                    <label for="WallpaperPath">Spotlight folder</label>
+                    <div class="nfo" data-toggle="tooltip" data-placement="right" title="The folder the lock screen images are saved. Should be auto detected."></div>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                    <input id="SpotlightPath" onblur="folderUpdated_blur('SpotlightPath')" type="text" data-bind="value: SpotlightPath" />
+                </td>
+                <td>
+                    <button type="button" onclick="btnBrowseSpotlight_click()" class="btn btn-sm btn-normal">Browse</button>
+                </td>
+                </tr>
+    
+                <!-- Spotlight image size -->
+                <tr>
+                <td colspan="2">
+                    <div class="space-16"></div>
+    
+                    <table>
+                    <tr>
+    
+                        <td>
+                        <span>
+                            <label>Spotlight image size</label>
+                            <div class="nfo" data-toggle="tooltip" data-placement="right" title="Select one of the detected spotlight image sizes that should be checked for when scanning for wallpapers."></div>
+                        </span>
+                        <br />
+                        <div class="space-16"></div>
+                        <div class="btn-group">
+                            <button class="btn btn-sm btn-normal dropdown-toggle width-135" type="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" data-bind="text: SpotlightImageWidth() + ' x ' + SpotlightImageHeight()"></button>
+                            <div class="dropdown-menu" data-bind="foreach: SpotlightResList">
+                            <a class="dropdown-item" href="#" data-bind="text: width + 'x' + height, click: spotlightResList_click"></a>
+                            </div>
+                        </div>
+                        </td>
+    
+                        <td class="pad-left-100">
+                        <span>
+                            <label>Bing interval</label>
+                            <div class="nfo" data-toggle="tooltip" data-placement="right" title="Check for new Bing wallpaper at this interval."></div>
+                        </span>
+                        <br />
+                        <div class="space-16"></div>
+                        <div class="btn-group">
+                            <button class="btn btn-sm btn-normal dropdown-toggle width-135" type="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" data-bind="text: bingIntervalName"></button>
+                            <div class="dropdown-menu" data-bind="foreach: bingIntervals">
+                            <a class="dropdown-item" href="#" data-bind="text: name, click: bingIntervals_click"></a>
+                            </div>
+                        </div>
+                        </td>
+    
+                    </tr>
+                    </table>
+    
+                </td>
+                </tr>
+    
+                <!-- Switches -->
+                <tr>
+                <td colspan="2">
+                    <div class="space-16"></div>
+                    <table>
+    
+                    <tr>
+                        <td class="width-200">
+                        <label for="RunAtStartup" class="hand">Run at startup</label>
+                        </td>
+                        <td class="pad-top-6">
+                        <label class="switch">
+                            <input id="RunAtStartup" type="checkbox" data-bind="checked: RunAtStartup">
+                            <span class="slider"></span>
+                        </label>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td>
+                        <label for="NewWallpaperNotification" class="hand">New wallpaper notification</label>
+                        </td>
+                        <td class="pad-top-6">
+                        <label class="switch">
+                            <input id="NewWallpaperNotification" type="checkbox" data-bind="checked: NewWallpaperNotification">
+                            <span class="slider"></span>
+                        </label>
+                        </td>
+                    </tr>
+    
+                    </table>
+                </td>
+                </tr>
+    
+            </table>
+    
+            </div>
+        </div>
+    </div>
+</script>
