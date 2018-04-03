@@ -20,7 +20,11 @@ class Settings {
         this.RunAtStartup = false;
         this.NewWallpaperNotification = true;
 
-        if (!fs.existsSync(settingsPath)) { return; }
+        if (!fs.existsSync(settingsPath)) {
+            let appdata = path.join(process.env.LOCALAPPDATA || process.env.APPDATA, 'wallpapernator2');
+            if (!fs.existsSync(appdata)) { fs.mkdirSync(appdata); }
+            return;
+        }
 
         let json = fs.readFileSync(settingsPath);
         let fromFile = JSON.parse(json);

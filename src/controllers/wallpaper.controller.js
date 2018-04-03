@@ -28,6 +28,8 @@ function stop() {
 
 function setWallpaper() {
     let thmList = thumbs.GetThumbList();
+    if (!thmList || thmList.length < 1) { return; }
+    
     let len = thmList.length;
     let newer = Math.random() > 0.3;
 
