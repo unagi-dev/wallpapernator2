@@ -19,15 +19,19 @@ function start(dir, destination, width, height) {
 
     // Check if directories exists
     try {
+        dir = path.join(dir);
         global.status.SpotlightMessage = 'Invalid Spotlight folder.';
         let stats = fs.statSync(dir);
+        console.log('sp dir', dir, stats);
         if (!stats.isDirectory()) { return; }
 
+        destination = path.join(destination);
         global.status.SpotlightMessage = 'Invalid wallpaper destination folder.';
         stats = fs.statSync(destination);
+        console.log('wp dir', destination, stats);
         if (!stats.isDirectory()) { return; }
     }
-    catch (err) { return; }
+    catch (err) { console.log(err); return; }
 
     global.status.SpotlightMessage = 'Running';
     spotlightPath = dir;
@@ -84,13 +88,15 @@ function processSpotlight() {
     try {
         global.status.SpotlightMessage = 'Invalid Spotlight folder.';
         let stats = fs.statSync(spotlightPath);
+        console.log('sp dir', dir, stats);
         if (!stats.isDirectory()) { return; }
 
         global.status.SpotlightMessage = 'Invalid wallpaper destination folder.';
         stats = fs.statSync(destinationPath);
+        console.log('wp dir', destination, stats);
         if (!stats.isDirectory()) { return; }
     }
-    catch (err) { return; }
+    catch (err) { console.log(err); return; }
 
     global.status.SpotlightMessage = 'Running';
 

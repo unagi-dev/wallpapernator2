@@ -1,4 +1,4 @@
-import { read } from "fs";
+const path = require('path');
 let settings = new Settings(); // In main.js
 let tmpVar = {};
 
@@ -76,16 +76,23 @@ function browseFolder(prop) {
     });
 }
 
-function validateDir(dirProp, path) {
-    fs.stat(path, function (err, stats) {
+function validateDir(dirProp, dir) {
+    if (!dir) {
+        settings[dirProp](tmpVar[dirProp]);
+        return;
+    }
+
+    dir = path.join(dir);
+    fs.stat(dir, function (err, stats) {
+        console.log(err);
         if (err || !stats.isDirectory()) {
             settings[dirProp](tmpVar[dirProp]);
             return;
         }
 
         // Valid - update and save
-        tmpVar[dirProp] = path;
-        settings[dirProp](path);
+        tmpVar[dirProp] = dir;
+        settings[dirProp](dir);
         settings.Save();
     });
 }
