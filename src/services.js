@@ -51,7 +51,7 @@ function startProcesses() {
     Spotlight.Start(settings.SpotlightPath, settings.WallpaperPath, settings.SpotlightImageWidth, settings.SpotlightImageHeight);
     Bing.Start(settings.BingInterval, settings.WallpaperPath);
     Thumnails.Sync(settings.WallpaperPath, settings.NewWallpaperNotification);
-    Wallpaper.Start(1, settings.WallpaperPath);
+    //Wallpaper.Start(1, settings.WallpaperPath);
 }
 
 module.exports = {
